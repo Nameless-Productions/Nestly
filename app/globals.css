@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.simpleBtn {
+    @apply border border-gray-400 p-2 rounded-xl bg-neutral-950 hover:bg-neutral-900 duration-300
+}
