@@ -3,3 +3,11 @@
 .simpleBtn {
     @apply border border-gray-400 p-2 rounded-xl bg-neutral-950 hover:bg-neutral-900 duration-300
 }
+
+.input {
+    @apply border-2 border-white rounded-xl p-2 bg-neutral-900 active:bg-neutral-950 hover:bg-neutral-950
+}
+
+.btnNormal {
+    @apply border-2 border-neutral-950 p-2 rounded-xl bg-neutral-900 hover:bg-neutral-950 duration-300 cursor-pointer
+}
