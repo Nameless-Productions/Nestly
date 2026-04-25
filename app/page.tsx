@@ -12,7 +12,7 @@ export default function MainPage() {
 
     <br />
 
-    <p className='mt-4 border border-gray-500 p-3 rounded-xl bg-zinc-800 w-fit mx-auto'>n3stly.site/sites/<span className='text-neutral-100'>yoursite</span></p>
+    <p className='mt-4 border border-gray-500 p-3 rounded-xl bg-zinc-800 w-fit mx-auto'><span className='text-white font-bold'>yoursite</span>.n3stly.site</p>
 
     <br />
 
