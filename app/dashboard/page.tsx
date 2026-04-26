@@ -1,10 +1,17 @@
+import { db } from '@/lib/db';
 import { createSiteForm } from '@/lib/sites/createSite'
 import { headers } from 'next/headers'
 import React from 'react'
 
 export default async function DashboardPage() {
+  const username = await (await headers()).get("x-username");
+  const user = await db.users.findUnique({
+    where: {
+      username: username!
+    }
+  })
   return (<>
-    <p className='text-2xl font-bold'>Hello, {(await headers()).get("x-username")}!</p>
+    <p className='text-2xl font-bold'>Hello, {username}!</p>
     <br />
 
     <p className='text-xl'>Create site</p>
