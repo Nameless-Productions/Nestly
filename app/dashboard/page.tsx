@@ -6,13 +6,14 @@ import React from 'react'
 
 export default async function DashboardPage() {
   const username = await (await headers()).get("x-username");
+  if(!username) return console.error("no username");
   const user = await db.users.findUnique({
     where: {
-      username: username!
+      username: username
     }
   })
-
-  const sites = await getSites(user?.id!);
+  if(!user) return console.error("no user");
+  const sites = await getSites(user.id);
   return (<>
     <p className='text-2xl font-bold'>Hello, {username}!</p>
     <br />
@@ -29,10 +30,10 @@ export default async function DashboardPage() {
     </form>
 
     {sites.map((s) => (
-      <div>
+      <div className='border w-fit p-3 rounded-xl mt-3 mb-3' key={s.id}>
         <p>{s.title}</p>
         <br />
-        <p>Link: <a href={`https://${s.id}n3stly.site`}>https://{s.id}n3stly.site</a></p>
+        <p>Link: <a className='underline text-blue-500' target='_blank' href={`https://${s.id}.n3stly.site`}>https://{s.id}.n3stly.site</a></p>
       </div>
     ))}
   </>)
