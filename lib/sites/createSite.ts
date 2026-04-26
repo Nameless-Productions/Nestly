@@ -38,6 +38,6 @@ export async function createSiteForm(formData: FormData) {
             username: username
         }
     })
-
-    await createSite(user?.id!, title, htmlBuffer);
+    if(!user) return;
+    await createSite(user.id, title, htmlBuffer);
 }
