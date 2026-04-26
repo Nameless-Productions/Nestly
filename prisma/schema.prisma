@@ -13,10 +13,16 @@ datasource db {
 }
 
 model Users {
-  id       Int    @id @default(autoincrement())
-  username String @unique
-  email    String @unique
-  password String
-  verifedEmail Boolean @default(false)
+  id              Int     @id @default(autoincrement())
+  username        String  @unique
+  email           String  @unique
+  password        String
+  verifedEmail    Boolean @default(false)
   emailVerifyCode String
+}
+
+model Pages {
+  id      Int    @id @default(autoincrement())
+  title   String
+  ownerId Int
 }
