@@ -40,4 +40,5 @@ export async function createSiteForm(formData: FormData) {
     })
     if(!user) return;
     await createSite(user.id, title, htmlBuffer);
+    redirect("/dashboard")
 }
