@@ -6,13 +6,13 @@ import React from 'react'
 
 export default async function DashboardPage() {
   const username = await (await headers()).get("x-username");
-  if(!username) return console.error("no username");
+  if(!username) return null;
   const user = await db.users.findUnique({
     where: {
       username: username
     }
   })
-  if(!user) return console.error("no user");
+  if(!user) return null;
   const sites = await getSites(user.id);
   return (<>
     <p className='text-2xl font-bold'>Hello, {username}!</p>
