@@ -2,7 +2,7 @@ import { db } from "@/lib/db";
 import { getSite } from "@/lib/sites/getSite";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, { params }: { params: { id: number }}) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }>}) {
     const {id} = await params;
     const page = await db.pages.findUnique({
         where: {
