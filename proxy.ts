@@ -10,15 +10,19 @@ export default async function Proxy(req: NextRequest) {
     ) {
         const cookieStore = await cookies();
         const token = cookieStore.get("token")?.value;
-        
         if(!token) return NextResponse.redirect(new URL("/login", req.url), 302);
+        
+        try{
+            const userInfo = await verifyToken(token);
+            if(!userInfo.uid || !userInfo.username) return NextResponse.redirect(new URL("/login", req.url), 302);
 
-        const userInfo = await verifyToken(token);
-        if(!userInfo.uid || !userInfo.username) return NextResponse.redirect(new URL("/login", req.url), 302);
-
-        const res = NextResponse.next();
-        res.headers.set("x-username", userInfo.username)
-        return res;
+            const res = NextResponse.next();
+            res.headers.set("x-username", userInfo.username)
+            return res;
+        }
+        catch {
+            return NextResponse.redirect(new URL("/login", req.url), 302);
+        }
     }
 
     return NextResponse.next();
