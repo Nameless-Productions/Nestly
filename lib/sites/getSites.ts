@@ -6,5 +6,5 @@ export async function getSites(ownerId: number) {
             ownerId: ownerId
         }
     });
-    return sites;
+    return sites.reverse();
 }
