@@ -1,4 +1,5 @@
 import { loginForm } from '@/lib/users/login'
+import Link from 'next/link'
 import React from 'react'
 
 export default function LoginPage() {
@@ -15,6 +16,8 @@ export default function LoginPage() {
 
                 <input type="submit" value="Login" className='btnNormal' />
             </form>
+            <br />
+            <p>No account? Register <Link href="/register" className='underline text-blue-500'>here</Link></p>
         </div>
     </div>
   )

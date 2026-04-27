@@ -1,4 +1,5 @@
 import { createUserForm } from '@/lib/users/createUser'
+import Link from 'next/link'
 import React from 'react'
 
 export default function RegisterForm() {
@@ -16,6 +17,8 @@ export default function RegisterForm() {
 
             <input type="submit" value="Register" className='btnNormal' />
         </form>
+        <br />
+        <p>Have an account? Log in <Link href="/login" className='underline text-blue-500'>here</Link></p>
     </div>
   </>)
 }
